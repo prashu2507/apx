@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>APEX_QR-VAULT:-Unlocking storage potential</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        /* Add any additional CSS styles here */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            background-image: url("images/background1.jpg");
+            background-size: cover;
+            background-attachment: scroll; /* Ensure the background remains fixed */
+        }
+
+        .container {
+            width: 100%;
+            min-height: 100vh;
+            background-image: url("images/background1.jpg");
+            background-size: cover;
+            background-position: center;
+            padding: 0px 5%;
+            position: relative;
+            background-color: rgba(255, 255, 255, 0.3); /* Change background color */
+        }
+
+        nav {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 0;
+        }
+
+        .logo {
+            width: 400px;
+            cursor: pointer;
+        }
+
+        nav ul {
+            list-style: none;
+            width: 100%;
+            text-align: center; /* Align text to the left */
+            padding-left: 100px; /* Adjust left padding */
+        }
+
+        nav ul li {
+            display: inline-block;
+            margin: 10px 20px;
+        }
+
+        nav ul li a {
+            color: #000000;
+            text-decoration: none;
+        }
+
+        .btn {
+            display: flex;
+            align-items: center;
+            padding: 10px 20px;
+            border: 0;
+            outline: 0;
+            border-radius: 5px;
+            background: #fa4f4f;
+            color: #fff;
+            font-weight: 500;
+            cursor: pointer;
+            transition: 0.5s;
+        }
+
+        .btn:hover {
+            border-radius: 30px;
+            background: #000;
+        }
+
+        .btn img {
+            width: 25px;
+            margin-right: 10px;
+        }
+
+        .bt {
+            display: inline-block;
+            padding: 10px 20px;
+            border: 0;
+            outline: 0;
+            border-radius: 5px;
+            background: #fa4f4f; /* Change background color */
+            color: #fff;
+            font-weight: 500;
+            cursor: pointer;
+            transition: 0.5s;
+            margin-left: auto; /* Move the button to the right side */
+        }
+
+        .bt:hover {
+            border-radius: 30px;
+            background: #000;
+        }
+
+        .content {
+            margin-top: 8%;
+            color: #000000;
+            max-width: 620px;
+            text-align: center;
+            animation: fadeInUp 1s ease forwards;
+        }
+
+        .content h1 {
+            font-size: 70px;
+            font-weight: 600;
+            line-height: 85px;
+            margin-bottom: 25px;
+            opacity: 0;
+        }
+
+        .content p {
+            opacity: 0;
+            animation: fadeInUp 1s ease forwards;
+            animation-delay: 0.5s;
+            margin-bottom: 30px;
+        }
+
+        .content form {
+            display: flex;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.2); /* Updated background color */
+            border-radius: 5px;
+            padding: 10px;
+            margin-top: 30px;
+            animation: fadeInUp 1s ease forwards;
+            animation-delay: 1s;
+        }
+
+        .content form input {
+            border: 0;
+            outline: 0;
+            width: 100%;
+            font-size: 16px;
+            padding-left: 10px;
+        }
+
+        .content form .btn {
+            font-size: 15px;
+            padding: 10px 30px;
+        }
+        .feature-img {
+    width: 530px;
+    position: absolute;
+    bottom: -300px; /* Move the image downwards */
+    right: 10%;
+    opacity: 0.8; /* Adjust opacity here */
+    background-color: rgba(255, 255, 255, 0.473); /* Background color with transparency */
+    animation: fadeIn s ease forwards;
+    animation-delay: 1s;
+}
+
+       
+
+        .anim {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: moveup 0.5s linear forwards;
+        }
+
+        @keyframes moveup {
+            100% {
+                opacity: 1;
+                transform: translateY(0px);
+            }
+        }
+
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 0.3;
+            }
+        }
+
+        /* Styles for dropdown menu */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: transparent;
+            width: max-content;
+            box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+            z-index: 1;
+            left: -160px;
+            top: 100%;
+            opacity: 0;
+            transition: opacity 0.5s ease, left 0.5s ease;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+            opacity: 1;
+            left: 0;
+        }
+
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
+            opacity: 1;
+            transform: translateY(0px);
+        }
+
+        .profile-img {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        /* Progress bar styles */
+        .progress-bar {
+            position: absolute;
+            bottom: 0;
+            right: 10px; /* Adjust this value to move the progress bar */
+            width: 0; /* Initial width set to 0 */
+            height: 5px; /* Adjust the height of the progress bar */
+            background-color: #fa4f4f; /* Color of the progress bar */
+            transition: width 1s ease; /* Smooth transition for the width change */
+        }
+
+        /* Styling for the DECODING heading */
+        .highlight-heading {
+            background-color: #fa4f4f; /* Orange background with transparency */
+            padding: 10px; /* Add padding for space around the text */
+            border-radius: 5px; /* Rounded corners */
+            font-size: 2rem; /* Larger font size */
+            font-weight: bold; /* Bold font weight */
+            color: #fff; /* White text color */
+            text-align: center; /* Center align the text */
+            text-transform: uppercase; /* Uppercase text */
+            margin-bottom: 20px; /* Add some space below the heading */
+        }
+        
+        /* Added CSS for selected quality buttons */
+        .quality-button.selected {
+            background-color: blue;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+     <nav>
+        <img src="images/logo.png" class="logo">
+        <ul>
+            <li><a href="https://prezi.com/view/LO2ozHFRVmdL0uZn0IO1/" target="_blank">Overview</a></li>
+            <li><a href="https://drive.google.com/file/d/1Gj8XBloPG4uUnK1Yn4UJEHhR2Dc86fD2/view?usp=sharing" target="_blank">Document</a></li>          
+            <li><a href="https://forms.gle/p79LHGAVRYqpXsQm6" target="_blank">Survey</a></li> <!-- Changed "contact us" to "Gains" -->
+            <div class="dropdown">
+                <button class="btn">Teammates</button>
+                <div class="dropdown-content">
+                    <a href="https://www.instagram.com/murali_paila__/">
+                        <img src="images/li.jpeg" class="profile-img">
+                        <span>Murali Paila</span>
+                        <span>Phno: 80082 42013</span>
+                    </a>
+                    <a href="https://www.instagram.com/0t_0e_07j_/">
+                        <img src="images/teja.jpg" class="profile-img">
+                        <span>Tejeswar Rao Majji</span>
+                        <span>Phno: 63015 86689</span>
+                    </a>
+                    <a href="https://www.instagram.com/gunjesh_07/">
+                        <img src="images/gunji.png" class="profile-img">
+                        <span>Gunjesh Kumar Singh</span>
+                        <span>Phno: 90630 95958</span>
+                    </a>
+                    <a href="https://www.instagram.com/the_alone_akhil/">
+                        <img src="images/akl.png" class="profile-img">
+                        <span>Akhil Nemalapuri</span>
+                        <span>Phno: 93900 93962</span>
+                    </a>
+                </div>
+            </div>
+        </ul>
+     </nav>
+            
+     <div class="content">
+        <div class="section">
+            <h1 class="highlight-heading anim">ENCODING</h1>
+            <p class="anim"></p>
+        </div>
+        <div class="section">
+             <form id="uploadForm1" enctype="multipart/form-data">
+                <input type="file" id="myfile1" name="myfile">
+                <button type="button" class="btn anim uploadButton" id="uploadButton1">Upload</button>
+             </form>
+             <div class="progress-bar"></div>
+        </div>
+        <div class="section">
+             <button class="quality-button" id="normal1">Normal</button>
+             <button class="quality-button" id="hd1">HD</button>
+             <button class="quality-button" id="uhd1">UHD</button>
+             <a id="downloadLink1" class="download-button" href="https://drive.google.com/uc?export=download&id=18UPseEG9vaTxZPnuztLCQRkohOfS5udk" download="file1.mp4">Download</a>
+             
+        </div>
+     </div>
+     
+     <div class="content">
+        <div class="section">
+            <h1 class="highlight-heading anim">DECODING</h1>
+            <p class="anim"></p>
+        </div>
+        <div class="section">
+             <form id="uploadForm2" enctype="multipart/form-data">
+                <input type="file" id="myfile2" name="myfile">
+                <button type="button" class="btn anim uploadButton" id="uploadButton2">Upload</button>
+             </form>
+             <div class="progress-bar"></div>
+        </div>
+        <div class="section">
+             <button class="quality-button" id="normal2">Normal</button>
+             <button class="quality-button" id="hd2">HD</button>
+             <button class="quality-button" id="uhd2">UHD</button>
+             <a id="downloadLink2" class="download-button" href="https://drive.google.com/uc?export=download&id=1EjtFCw4kFewTuWtoPvefDCq3lkN5k_r1" download="file2.mp4">Download</a>
+        </div>
+     </div>
+</div>
+<div>
+    <img src="images/feat1.jpg" class="feature-img">
+</div>
+
+<div id="image-container">
+    <embed id="pdfEmbed" type="application/pdf" width="100%" height="100%">
+</div>
+
+<script>
+    document.querySelectorAll('.link').forEach(item => {
+        item.addEventListener('click', event => {
+            const src = event.target.getAttribute('data-src');
+            showPdf(src);
+        });
+    });
+
+    function showPdf(src) {
+        const pdfEmbed = document.getElementById('pdfEmbed');
+        pdfEmbed.src = src;
+        document.getElementById('image-container').style.display = 'block';
+    }
+
+    // Adding event listener to the download button
+    document.querySelectorAll('.download-button').forEach(downloadButton => {
+        downloadButton.addEventListener('click', function(event) {
+            const uploadForm = event.target.closest('.section').querySelector('form');
+            const uploadedFile = uploadForm.querySelector('input[type=file]').files[0];
+            if (!uploadedFile) {
+                alert("Please upload a file first!");
+                event.preventDefault(); // Prevent default action (i.e., following the link)
+            } else {
+                // Reload the page after 3 seconds
+                setTimeout(() => {
+                    window.location.reload();
+                }, 3000); // Change this value to set the delay before reloading (in milliseconds)
+            }
+        });
+    });
+
+    document.querySelectorAll('.uploadButton').forEach(uploadButton => {
+        uploadButton.addEventListener('click', function(event) {
+            const section = event.target.closest('.section');
+            const progressBar = section.querySelector('.progress-bar');
+            const uploadForm = section.querySelector('form');
+            const uploadedFile = uploadForm.querySelector('input[type=file]').files[0];
+            if (!uploadedFile) {
+                alert("Please select a file to upload!");
+                return;
+            }
+            const formData = new FormData();
+            formData.append('file', uploadedFile);
+            fetch('upload.php', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+                if (data.success) {
+                    progressBar.style.width = '100%';
+                } else {
+                    alert("File upload failed!");
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert("File upload failed!");
+            });
+        });
+    });
+
+    // Update the background color of selected quality buttons
+    function updateQualityButtonState(id) {
+        document.querySelectorAll('.quality-button').forEach(button => {
+            if (button.id === id) {
+                button.classList.add('selected');
+            } else {
+                button.classList.remove('selected');
+            }
+        });
+    }
+
+    document.getElementById('normal1').addEventListener('click', function() {
+        updateQualityButtonState('normal1');
+        document.getElementById('downloadLink1').href = 'https://drive.google.com/uc?export=download&id=18UPseEG9vaTxZPnuztLCQRkohOfS5udk';
+    });
+
+    document.getElementById('hd1').addEventListener('click', function() {
+        updateQualityButtonState('hd1');
+        document.getElementById('downloadLink1').href = 'https://drive.google.com/uc?export=download&id=18UPseEG9vaTxZPnuztLCQRkohOfS5udk';
+    });
+
+    document.getElementById('uhd1').addEventListener('click', function() {
+        updateQualityButtonState('uhd1');
+        document.getElementById('downloadLink1').href = 'https://drive.google.com/uc?export=download&id=18UPseEG9vaTxZPnuztLCQRkohOfS5udk';
+    });
+
+    document.getElementById('normal2').addEventListener('click', function() {
+        updateQualityButtonState('normal2');
+        document.getElementById('downloadLink2').href = 'https://drive.google.com/uc?export=download&id=1EjtFCw4kFewTuWtoPvefDCq3lkN5k_r1';
+    });
+
+    document.getElementById('hd2').addEventListener('click', function() {
+        updateQualityButtonState('hd2');
+        document.getElementById('downloadLink2').href = 'https://drive.google.com/uc?export=download&id=1EjtFCw4kFewTuWtoPvefDCq3lkN5k_r1';
+    });
+
+    document.getElementById('uhd2').addEventListener('click', function() {
+        updateQualityButtonState('uhd2');
+        document.getElementById('downloadLink2').href = 'https://drive.google.com/uc?export=download&id=1EjtFCw4kFewTuWtoPvefDCq3lkN5k_r1';
+    });
+</script>
+</body>
+</html>
